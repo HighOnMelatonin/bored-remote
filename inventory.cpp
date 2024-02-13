@@ -35,9 +35,8 @@ int createDB(){
 
 int createTable(std::string location){
     sqlite3* DB;
-    std::string sql =std::format("CREATE TABLE {}}('Item ID' INT PRIMARY KEY NOT NULL,
-    Name TEXT NOT NULL,
-    Type TEXT NOT NULL);", location);
+    std::string sql =std::format("CREATE TABLE {}}('Item ID' INT PRIMARY KEY NOT NULL, 'Name' TEXT NOT NULL,'Type' TEXT NOT NULL);", location);
+    
     int exit = 0;
     exit = sqlite3_open("resources/inventory.db", &DB);
 

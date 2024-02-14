@@ -8,6 +8,8 @@ End deliverables:
 1. GUI
 2. Multiple operands
 3. Multiple operations (execute in order)
+
+Calculator will execute in * / + - order, from left to right
 */
 
 #include <iostream>
@@ -106,7 +108,8 @@ double calc(char op){
     }
 
     //second loop through to execute remaining ops
-    while (!ops.isEmpty() && !nums.isEmpty()){
+    double result;
+    while (!ops.isEmpty() || !nums.isEmpty()){
         op = ops.pop();
         num2 = std::stod(nums.pop());
         num1 = std::stod(nums.pop());
@@ -116,7 +119,11 @@ double calc(char op){
 
             case '-':
                 result = num1 - num2;
+            
+            default:
+                return "Error, invalid operation";
         }
+        nums.push(result);
     }
 }
 
@@ -125,11 +132,11 @@ int main(){
     char op = 's';
     //s for start
     double result;
-    string getOp = "Enter an operation ('+', '-', '*', '/'): ";
+    string getOp = "Enter an equation without parentheses: ";
     do{
         result = calc(op);
         std::cout << result << std::endl;
-        string getOp = "Enter an operation ('+', '-', '*', '/', 'x' to exit): ";
+        string getOp = "Enter an equation without parentheses('x' to exit): ";
         cin >> op;
     }
     while(op != 'x')

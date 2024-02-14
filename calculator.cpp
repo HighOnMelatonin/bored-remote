@@ -37,7 +37,7 @@ bool stack::push(char x){
     }
 }
 
-char stack::pop(){
+std::string stack::pop(){
     if (top < 0){
         std::cout << "Stack underflow" << std::endl;
         return 'f';
@@ -47,6 +47,10 @@ char stack::pop(){
         top--;
         return out;
     }
+}
+
+char stack::peek(){
+    return s[top];
 }
 
 bool stack::isEmpty(){
@@ -62,17 +66,36 @@ double calc(char op){
 
     class stack nums;
     class stack ops;
-    //push inputs into stack
+
+    double num1;
+    //push inputs into stack and executes * and / in first loop through
     while(char& c : input){
-        std::string numstr = '';
+        std::string numStr = '';
         //in case num has multiple digits
         if (std::isdigit(c)){
-            numstr.append(c);
+            numStr.append(c);
         }
         else{
-            nums.push(numstr);
-            //end of number, push to numstack
-            numstr = '';
+
+            //check if * or / was the last operation
+            if (ops.peek() == '*'){
+                num1 = std::stod(nums.pop());
+                num2 = std::stod(numStr);
+                numStr = std::to_string(num1*num2);
+                lastOp = ops.pop();
+            }
+            else if (ops.peek() == '/'){
+                num1 = stod(nums.pop());
+                num2 = stod(numStr);
+                numStr = std::to_string(num1/num2);
+                lastOp = ops.pop();
+            }
+            else{
+                //pass
+            }
+
+            nums.push(numStr);  //Push the result as the latest numStr
+
             if (c == ' '){
                 //pass
             }
@@ -82,27 +105,18 @@ double calc(char op){
         }
     }
 
-    //calculating via switch case
-    switch(op){
-        case '+':
-            return add(num1 + num2);
+    //second loop through to execute remaining ops
+    while (!ops.isEmpty() && !nums.isEmpty()){
+        op = ops.pop();
+        num2 = std::stod(nums.pop());
+        num1 = std::stod(nums.pop());
+        switch(op){
+            case '+':
+                result = num1 + num2;
 
-        case '-':
-            return (num1 - num2);
-        
-        case '*':
-            return (num1*num2);
-        
-        case '/':
-            return (num1/num2);
-
-        case 'x':
-            exit = true;
-            return (0);
-
-        default:
-            cout << "Invalid operation" << endl;
-            return (0);
+            case '-':
+                result = num1 - num2;
+        }
     }
 }
 

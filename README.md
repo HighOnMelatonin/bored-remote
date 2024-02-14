@@ -1,5 +1,5 @@
 # bored-remote
-When bored at work
+When bored at work/nothing to do
 
 ## Calculator
 A basic GUI calculator that does basic arithmetic, with multiple inputs.

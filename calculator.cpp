@@ -11,13 +11,11 @@ End deliverables:
 */
 
 #include <iostream>
-#include <cstdarg>
-//C++ std arg lib for variadic functions (newer C++ versions can use template)
 
-//Defining a stack to help with order of operations
+//a stack to help with order of operations
 class stack{
     int top = -1;
-    int max = 20
+    int max = 30
 
     public:
     char s[max];
@@ -55,22 +53,36 @@ bool stack::isEmpty(){
     return (top < 0);
 }
 
-
-double calc(bool exit){
+//does main calculation, handles order of operations and returns result
+double calc(char op){
     using namespace std;
-    char op;
-    double num1, num2;
+    std::string input;
     
-    string getOp = "Enter an operation ('+', '-', '*', '/', 'x' to exit): ";
-    //exit the moment 'x' is entered
-    string getNum = "Enter 2 operands: ";
+    cin >> input;
 
-    cout << getOp << endl;
-    cin >> op;
+    class stack nums;
+    class stack ops;
+    //push inputs into stack
+    while(char& c : input){
+        std::string numstr = '';
+        //in case num has multiple digits
+        if (std::isdigit(c)){
+            numstr.append(c);
+        }
+        else{
+            nums.push(numstr);
+            //end of number, push to numstack
+            numstr = '';
+            if (c == ' '){
+                //pass
+            }
+            else{
+                ops.push(c);
+            }
+        }
+    }
 
-    cout << getNum << endl;
-    cin >> num1 >> num2;
-
+    //calculating via switch case
     switch(op){
         case '+':
             return add(num1 + num2);
@@ -94,29 +106,18 @@ double calc(bool exit){
     }
 }
 
+//runs the main loop, requests for operation and outputs result
 int main(){
-    bool exit = false;
+    char op = 's';
+    //s for start
     double result;
+    string getOp = "Enter an operation ('+', '-', '*', '/'): ";
     do{
-        
+        result = calc(op);
+        std::cout << result << std::endl;
+        string getOp = "Enter an operation ('+', '-', '*', '/', 'x' to exit): ";
+        cin >> op;
     }
+    while(op != 'x')
 }
-
-int main(){
-    bool exit = false;
-    double result;
-    do{
-        result = calc(exit);
-        if (result == 0){
-            if (!exit){
-                std::cout << result << std::endl;
-            }
-        }
-        else{
-            std::cout << result << std::endl;
-        }
-    }
-    while(!exit);
-}
-
 

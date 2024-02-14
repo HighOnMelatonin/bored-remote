@@ -2,9 +2,59 @@
 /*
 I would like a GUI pls thx
 
+As of 130224, calculator can only do basic arithmetic with 2 operands
+
+End deliverables:
+1. GUI
+2. Multiple operands
+3. Multiple operations (execute in order)
 */
 
 #include <iostream>
+#include <cstdarg>
+//C++ std arg lib for variadic functions (newer C++ versions can use template)
+
+//Defining a stack to help with order of operations
+class stack{
+    int top = -1;
+    int max = 20
+
+    public:
+    char s[max];
+    //stack with max size 20
+
+    bool push(char x);
+    char pop();
+    bool isEmpty();
+}
+
+bool stack::push(char x){
+    if (top >= max - 1){
+        std::cout << "Stack overflow" << std::endl;
+        return false;
+    }
+    else{
+        s[++top] = x;
+        return true;
+    }
+}
+
+char stack::pop(){
+    if (top < 0){
+        std::cout << "Stack underflow" << std::endl;
+        return 'f';
+    }
+    else{
+        char out = s[top];
+        top--;
+        return out;
+    }
+}
+
+bool stack::isEmpty(){
+    return (top < 0);
+}
+
 
 double calc(bool exit){
     using namespace std;
@@ -21,10 +71,9 @@ double calc(bool exit){
     cout << getNum << endl;
     cin >> num1 >> num2;
 
-    //check num type to make sure numbers were inputted
     switch(op){
         case '+':
-            return (num1 + num2);
+            return add(num1 + num2);
 
         case '-':
             return (num1 - num2);
@@ -42,6 +91,14 @@ double calc(bool exit){
         default:
             cout << "Invalid operation" << endl;
             return (0);
+    }
+}
+
+int main(){
+    bool exit = false;
+    double result;
+    do{
+        
     }
 }
 

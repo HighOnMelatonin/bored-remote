@@ -35,3 +35,16 @@ Program functions:
 5. Create working directory
 
 ### Issues
+
+
+---
+
+## Web Dev Challenge
+A personal website
+
+### To-Do
+1. A home page
+2. About page
+
+### Tech Stack:
+Node.js

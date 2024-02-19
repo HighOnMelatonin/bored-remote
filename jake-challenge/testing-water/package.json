@@ -1,4 +1,5 @@
 {
+  "type":"module",
   "name": "app.js",
   "version": "1.0.0",
   "description": "main",
@@ -16,4 +17,5 @@
     "url": "https://github.com/HighOnMelatonin/bored-remote/issues"
   },
   "homepage": "https://github.com/HighOnMelatonin/bored-remote#readme"
+
 }

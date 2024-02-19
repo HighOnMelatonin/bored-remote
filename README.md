@@ -48,3 +48,4 @@ A personal website
 
 ### Tech Stack:
 Node.js
+React

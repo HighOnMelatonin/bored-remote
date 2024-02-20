@@ -54,5 +54,6 @@ A personal website
 2. About page
 
 ### Tech Stack:
-Node.js
-React
+Node.js<br>
+Express<br>
+React<br>

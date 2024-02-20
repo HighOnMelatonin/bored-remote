@@ -1,7 +1,14 @@
 # bored-remote
-When bored at work/nothing to do
+When bored at work/nothing to do<br>
+### Contents:
+[1. Calculator](#calc)<br>
+[2. Inventory](#inven)<br>
+[3. Personal Website](#perWeb)<br>
+<br>
 
-## Calculator
+---
+
+## <a name = "calc"></a>Calculator
 A basic GUI calculator that does basic arithmetic, with multiple inputs.
 
 ### To-Do
@@ -14,7 +21,7 @@ A basic GUI calculator that does basic arithmetic, with multiple inputs.
 
 ---
 
-## Inventory
+## <a name = "inven">Inventory</a>
 An inventory database management system that users can read/write to.
 
 
@@ -39,7 +46,7 @@ Program functions:
 
 ---
 
-## Web Dev Challenge
+## <a name = "perWeb">Personal Website</a>
 A personal website
 
 ### To-Do

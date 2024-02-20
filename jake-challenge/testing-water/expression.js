@@ -8,7 +8,7 @@ const app = express();
 
 //this is a response to a get request
 app.get('/', (req,res) => {
-    app.use(express.static('reaction'))
+    app.use('/home',express.static(path.join('app.js','reaction')))
     //display static objects, express.static('directory_name')
 });
 

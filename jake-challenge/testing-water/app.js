@@ -1,25 +1,41 @@
-//Hello world using ESM
-//example from vscode.com
-var msg = "hello world";
-console.log(msg);
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-//example from nodejs.org
-import http from 'node:http';
-//To load ES module, set "type": "module" in the package.json
-//package.json stores project metadata
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
-const hostname = '127.0.0.1'
-const port = 3000;
+var app = express();
 
-//request and response, statusCode 200 indicates successful response
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type':'plain text'});
-    res.end('Hello World!');
-    //respond with "Hello world"
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
 
-//server listens at specified port and host name
-server.listen(port, hostname, () => {
-    console.log(`Server running at https://${hostname}:${port}/`);
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
-//To run, run node app.js in the terminal
+
+module.exports = app;

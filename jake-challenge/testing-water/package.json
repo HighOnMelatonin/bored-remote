@@ -4,7 +4,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+<<<<<<< HEAD
     "start": "node expression.js"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> parent of aa6f227 (hello express)
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

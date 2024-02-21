@@ -54,6 +54,7 @@ A personal website
 2. About page
 
 ### Tech Stack:
-Node.js<br>
+Node<br>
 Express<br>
 React<br>
+Derby<br>

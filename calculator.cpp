@@ -17,7 +17,7 @@ Calculator will execute in * / + - order, from left to right
 //a stack to help with order of operations
 class stack{
     int top = -1;
-    int max = 30
+    int max = 30;
 
     public:
     char s[max];
@@ -26,7 +26,7 @@ class stack{
     bool push(char x);
     char pop();
     bool isEmpty();
-}
+};
 
 bool stack::push(char x){
     if (top >= max - 1){

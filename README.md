@@ -4,9 +4,12 @@ When bored at work/nothing to do<br>
 [1. Calculator](#calc)<br>
 [2. Inventory](#inven)<br>
 [3. Personal Website](#perWeb)<br>
+[4. Fees Calculator](#fees)<br>
 <br>
 
 ---
+
+<br>
 
 ## <a name = "calc"></a>Calculator
 A basic GUI calculator that does basic arithmetic, with multiple inputs.
@@ -18,8 +21,11 @@ A basic GUI calculator that does basic arithmetic, with multiple inputs.
 ### Issues
 1. Loops indefinitely when non numbers are input
 2. Still takes number operand inputs when user wants to exit
+<br>
 
 ---
+
+<br>
 
 ## <a name = "inven">Inventory</a>
 An inventory database management system that users can read/write to.
@@ -42,9 +48,11 @@ Program functions:
 5. Create working directory
 
 ### Issues
-
+<br>
 
 ---
+
+<br>
 
 ## <a name = "perWeb">Personal Website</a>
 A personal website
@@ -58,3 +66,21 @@ Node<br>
 Express<br>
 React<br>
 Derby<br>
+<br>
+
+---
+
+<br>
+
+## <a name = "fees">Fees Calculator</a>
+A calculator that calculates the total cost of buying a stock
+
+### To-Do
+1. Include fees for other stock exchanges
+
+### Issues
+<br>
+
+---
+
+<br>

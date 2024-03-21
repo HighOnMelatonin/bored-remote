@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
+import { useState } from "react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -15,15 +16,25 @@ const my = {
 }
 
 function MyButton() {
+  const [count, setCount] = useState(0);
+  //useState returns [current state, function to change state]
   function handleClick() {
-    alert("stop, it tickles")
+    setCount(count + 1)
+  }
+
+  if (count == 0) {
+    return (
+      //handleClick has no (), react will call the event handler when the event occurs
+      <button onClick={handleClick}>
+        I'm a button
+      </button>
+    );
   }
   return (
-    //handleClick has no (), react will call the event handler when the event occurs
     <button onClick={handleClick}>
-      I'm a button
+      Clicked {count} times
     </button>
-  );
+  )
 }
 
 export default function Index() {

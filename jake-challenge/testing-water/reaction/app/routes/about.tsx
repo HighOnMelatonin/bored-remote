@@ -9,6 +9,7 @@ export const meta: MetaFunction = () => {
 
 
 export default function About() {
+    //react components names need to start with a capital letter
     return (
         <div>
             <h1>About</h1>

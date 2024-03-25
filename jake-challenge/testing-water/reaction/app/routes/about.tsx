@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import Linkings from "./linkings";
 
 export const meta: MetaFunction = () => {
     return [
@@ -16,4 +17,5 @@ export default function About() {
             <p>Hello there.<br />General Kenobi.</p>
         </div>
     )
+    //trying to implement a back to home button
 }

@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 
 
@@ -6,20 +6,20 @@ type array = {
     items: string[]
 };
 
-
-
 export default function AForm(){
-    function getName(FormData){
-        const name = FormData.length("name")
-        return (
-            <p>Hello {name}</p>
-        )
-    };
+    let [name, getName] = useState('name')
+    
+    function handleText(FormData) {
+        
+    }
 
     return (
-        <form action={getName}>
-            <input name="name"/>
-        </form>
+        <div>
+            <form action={handleText}>
+                <input id="name"/>
+            </form>
+            <p>{displayName}</p>
+        </div>
     );
 }
 

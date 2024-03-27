@@ -23,11 +23,11 @@ const my = {
 //list of all pages
 const pages = [
 	"about",
-	"todo"
+	"todo",
+	"chatroom"
 ];
 
 export default function Index() {
-
 	return (
 		<div>
 			<h1>Hello</h1>
@@ -38,6 +38,9 @@ export default function Index() {
 			<br />
 			<Linkings file={pages[1]}/>
 			<br />
+			<Linkings file={pages[2]}/>
+			<br />
 		</div>
 	);
 }
+

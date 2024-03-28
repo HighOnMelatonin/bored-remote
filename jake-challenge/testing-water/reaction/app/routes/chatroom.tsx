@@ -24,6 +24,8 @@ function ChatRoom({ roomId }){
             <h1>Welcome to {roomId} room</h1>
         </>
     )
+    // <Fragment> (<>) allows for grouping of elements without needing a wrapper
+    // groups eleements tgt in situations where you need a singel element
 }
 
 export default function App(){

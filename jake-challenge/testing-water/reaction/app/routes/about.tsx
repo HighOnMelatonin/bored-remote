@@ -1,5 +1,4 @@
 import type { MetaFunction } from "@remix-run/node";
-import Linkings from "./linkings";
 
 export const meta: MetaFunction = () => {
     return [

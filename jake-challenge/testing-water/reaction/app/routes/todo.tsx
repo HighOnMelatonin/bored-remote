@@ -1,41 +1,78 @@
-import { useState } from "react";
+import { useState } from 'react';
+import TodoList, { createTodos } from './todolist.tsx';
 
-type array = {
-    items: string[]
-};
+const todos = createTodos();
 
-export default function AForm(){
-    let [name, getName] = useState('name')
-    
-    function handleText(FormData) {
-        
-    }
-
-    return (
-        <div>
-            <form action={handleText}>
-                <input id="name"/>
-            </form>
-            <p>{displayName}</p>
-        </div>
-    );
+export default function App() {
+  const [tab, setTab] = useState('all');
+  const [isDark, setIsDark] = useState(false);
+  return (
+    <>
+      <button onClick={() => setTab('all')}>
+        All
+      </button>
+      <button onClick={() => setTab('active')}>
+        Active
+      </button>
+      <button onClick={() => setTab('completed')}>
+        Completed
+      </button>
+      <br />
+      <label>
+        <input
+          type="checkbox"
+          checked={isDark}
+          onChange={e => setIsDark(e.target.checked)}
+        />
+        Dark mode
+      </label>
+      <hr />
+      <TodoList
+        todos={todos}
+        tab={tab}
+        theme={isDark ? 'dark' : 'light'}
+      />
+    </>
+  );
 }
 
-export function Listings({ items }: array) {
-    let listItems = items.map(item => <li>{item}</li>)
-    //map creates a new array populated with the results of calling a provided function on every element in the array
-    return (
-        <div>
-            <h1>A To Do list</h1>
-            <ol>{listItems}</ol>
-        </div>
-    )
-}
 
-// export default function ToDo() {
-//     //useMemo(calculateValue, dependencies)
-//     const visibleTodos = useMemo(
-//         () => filterTodos(todos, tab),
-//         [todos, tab]
+
+
+// import { useState } from "react";
+// import TodoList, { createTodos } from "./todolist";
+
+// const todos = createTodos();
+
+// export default function App() {
+//     const [tab, setTab] = useState('all');
+//     const [isDark, setIsDark] = useState(false);
+//     return (
+//         <>
+//             <button onClick={()=> setTab('all')}>
+//                 All
+//             </button>
+//             <button onClick={() => setTab('active')}>
+//                 Active
+//             </button>
+//             <button onClick={() => setTab('completed')}>
+//                 Completed
+//             </button>
+//             <br />
+//             <label>
+//                 <input
+//                 type = "checkbox"
+//                 checked = {isDark}
+//                 onChange = {e => setIsDark(e.target.checked)}
+//                 />
+//                 Dark mode
+//             </label>
+//             <hr />
+//             <TodoList
+//             todos = {todos}
+//             tab = {tab}
+//             theme = {isDark ? 'dark' : 'light'}
+//             />
+//         </>
 //     )
 // }

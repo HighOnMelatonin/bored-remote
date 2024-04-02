@@ -6,6 +6,6 @@ import { Link } from "@remix-run/react";
 
 export default function Linkings({ file }: {file: string}) {
     return (
-        <Link to={ file }>{ file }</Link>
+        <p><Link to={ file }>{ file }</Link></p>
     )
 }

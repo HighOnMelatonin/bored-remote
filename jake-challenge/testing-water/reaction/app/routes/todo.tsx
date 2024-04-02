@@ -6,6 +6,7 @@ const todos = createTodos();
 export default function App() {
   const [tab, setTab] = useState('all');
   const [isDark, setIsDark] = useState(false);
+  // dark mode doesn't work
   return (
     <>
       <button onClick={() => setTab('all')}>

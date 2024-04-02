@@ -3,6 +3,7 @@ import { Link } from "@remix-run/react";
 import MyButton from "./abutton";
 //importing button component
 import Linkings from "./linkings"
+import { i } from "node_modules/vite/dist/node/types.d-AKzkD8vd";
 
 
 export const meta: MetaFunction = () => {
@@ -28,17 +29,14 @@ const pages = [
 ];
 
 export default function Index() {
+	const listPages = pages.map(page => <li><Linkings file={page} /></li>)
 	return (
 		<div>
 			<h1>Hello</h1>
 			<p>I'm {my.name}</p>
 			<MyButton />
 			<br />
-			<Linkings file={pages[0]}/>
-			<br />
-			<Linkings file={pages[1]}/>
-			<br />
-			<Linkings file={pages[2]}/>
+			<ul>{listPages}</ul>
 			<br />
 		</div>
 	);

@@ -9,7 +9,7 @@ export default function TodoList({ todos, tab, theme }) {
     
     return (
         <div className={theme}>
-            <p><b>To Do</b></p>
+            <h1><b>To Do</b></h1>
             <ol>
                 {visibleTodos.map(todo => (
                     <li key={todo.id}>

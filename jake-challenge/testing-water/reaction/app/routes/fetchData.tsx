@@ -18,3 +18,7 @@ export default function Page(){
         };
     }, [person]);
 }
+
+function fetchBio(person: string) {
+    throw new Error("Function not implemented.");
+}

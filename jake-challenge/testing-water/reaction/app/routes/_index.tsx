@@ -1,10 +1,9 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import { Link, Links } from "@remix-run/react";
 import MyButton from "./abutton";
 //importing button component
 import Linkings from "./linkings"
-import { i } from "node_modules/vite/dist/node/types.d-AKzkD8vd";
-
+import { Suspense } from "react";
 
 export const meta: MetaFunction = () => {
 	return [
@@ -25,20 +24,25 @@ const my = {
 const pages = [
 	"about",
 	"todo",
-	"chatroom"
+	"chatroom",
+	"forms"
 ];
 
 export default function Index() {
 	const listPages = pages.map(page => <li><Linkings file={page} /></li>)
+	// I would like to make it not a list
 	return (
 		<div>
 			<h1>Hello</h1>
 			<p>I'm {my.name}</p>
 			<MyButton />
+			<p>Subpages that make use of various hooks and components</p>
 			<br />
 			<ul>{listPages}</ul>
 			<br />
+			<Links />
 		</div>
 	);
 }
+
 

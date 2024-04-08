@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "dev": "remix vite:dev",
+    "dev": "remix vite:dev --host",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "vite preview",
     "typecheck": "tsc"
@@ -15,6 +15,7 @@
     "@remix-run/react": "^2.8.1",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
+    "jotai": "^2.7.2",
     "next": "^14.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

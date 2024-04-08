@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useAtom } from "jotai";
+import counter from "~/atoms/counter";
 /*
 import statement:
 with default            : import MyButton from './abutton.tsx';
@@ -14,6 +16,12 @@ export default function MyButton() {
     function handleClick() {
         setCount(count + 1)
     }
+        
+    // const [count, setCounter] = useAtom(counter);
+    // useState but usable outside the component
+    // function handleClick() {
+    //     setCounter(count + 1)
+    // }
 
     if (count == 0) {
         return(

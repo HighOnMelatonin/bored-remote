@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import TodoList, { createTodos } from './todolist.tsx';
+import TodoList, { createTodos } from './todolist';
 
 const todos = createTodos();
 

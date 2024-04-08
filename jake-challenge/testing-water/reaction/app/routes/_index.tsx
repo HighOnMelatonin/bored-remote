@@ -1,9 +1,10 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link, Links } from "@remix-run/react";
 import MyButton from "./abutton";
 //importing button component
-import Linkings from "./linkings"
-import { Suspense } from "react";
+import Linkings from "./linkings";
+import {useAtom} from "jotai";
+import user from "~/atoms/user";
+
 
 export const meta: MetaFunction = () => {
 	return [
@@ -25,22 +26,45 @@ const pages = [
 	"about",
 	"todo",
 	"chatroom",
-	"forms"
+	"forms",
+	"atomic"
 ];
+
 
 export default function Index() {
 	const listPages = pages.map(page => <li><Linkings file={page} /></li>)
 	// I would like to make it not a list
+
+	const [username, setUser] = useAtom(user);
+
+	async function handleUser(e) {
+		e.preventDefualt();
+
+		const form = document.querySelector('#nameForm')
+		const formData = new FormData(form);
+
+		const response = await fetch("http://localhost:5173/", {
+			method: "post",
+			body: formData,
+		})
+		console.log(await response.text())
+
+		// setUser(response.text());
+	}
+
 	return (
 		<div>
-			<h1>Hello</h1>
+			<h1>Hello {username}</h1>
 			<p>I'm {my.name}</p>
+			<form encType="multipart/form-data" id="nameForm" method="post" onSubmit={handleUser}>
+				<input type="text" name="name" placeholder="And you are?"/>
+				<button type="submit">Submit</button>
+			</form>
 			<MyButton />
 			<p>Subpages that make use of various hooks and components</p>
 			<br />
 			<ul>{listPages}</ul>
 			<br />
-			<Links />
 		</div>
 	);
 }

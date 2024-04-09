@@ -8,8 +8,7 @@ export default function TodoList({ todos, tab, theme }) {
     //const cachedValue = useMemo(calculateValue, dependencies  )
     
     return (
-        <div className={theme}>
-            <h1><b>To Do</b></h1>
+        <div>
             <ol>
                 {visibleTodos.map(todo => (
                     <li key={todo.id}>

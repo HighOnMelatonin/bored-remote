@@ -6,13 +6,14 @@ export default function GetEntry() {
         const form = document.querySelector('#entryForm')
         const formData = new FormData(form);
         
-        console.log(formData)
 
         const response = await fetch("http://localhost:5000/", {
             method: "post",
             body: formData,
         });
-        console.log(await response.json())
+
+        console.log(formData.get("entry"))
+        console.log(await response.text())
     }
 
 
@@ -23,6 +24,7 @@ export default function GetEntry() {
             <form encType="multipart/form-data" id="entryForm" method="post" onSubmit={saveEntry}>
                 <input type="text" name="entry" />
                 <button type="submit">Submit</button>
+                <p>{}</p>
             </form>
         </div>
     )

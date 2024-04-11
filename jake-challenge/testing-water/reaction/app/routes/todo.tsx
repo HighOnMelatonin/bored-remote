@@ -1,15 +1,27 @@
+// This file manages the displaying of the todolist
+
 import { useState } from 'react';
-import TodoList, { createTodos } from './todolist';
+import TodoList from './todolist';
 import user from "~/atoms/user";
 import { useAtom } from "jotai";
+import todo from "~/atoms/todo";
 
-const todos = createTodos();
 
 export default function App() {
   const [tab, setTab] = useState('all');
   const [isDark, setIsDark] = useState(false);
-
   const [username, setUser] = useAtom(user);
+
+  const [thingsTodo, setTodo] = useAtom(todo);
+  async function addTodo(e) {
+      e.preventDefault()
+      const form = document.querySelector('#getTodo');
+      const formData = new FormData(form);
+      
+      console.log(formData.get("item"))
+      thingsTodo.push(formData.get("item"))
+  }
+  
   // dark mode doesn't work
   return (
     <>
@@ -36,51 +48,14 @@ export default function App() {
       </label>
       <hr />
       <TodoList
-        todos={todos}
+        todos={thingsTodo}
         tab={tab}
         theme={isDark ? 'dark' : 'light'}
       />
+      <form id="getTodo" method="post" onSubmit={addTodo}>
+        <input type="text" name="item" placeholder="To Do" />
+        <button type="submit">Submit</button>
+      </form>
     </>
   );
 }
-
-
-
-
-// import { useState } from "react";
-// import TodoList, { createTodos } from "./todolist";
-
-// const todos = createTodos();
-
-// export default function App() {
-//     const [tab, setTab] = useState('all');
-//     const [isDark, setIsDark] = useState(false);
-//     return (
-//         <>
-//             <button onClick={()=> setTab('all')}>
-//                 All
-//             </button>
-//             <button onClick={() => setTab('active')}>
-//                 Active
-//             </button>
-//             <button onClick={() => setTab('completed')}>
-//                 Completed
-//             </button>
-//             <br />
-//             <label>
-//                 <input
-//                 type = "checkbox"
-//                 checked = {isDark}
-//                 onChange = {e => setIsDark(e.target.checked)}
-//                 />
-//                 Dark mode
-//             </label>
-//             <hr />
-//             <TodoList
-//             todos = {todos}
-//             tab = {tab}
-//             theme = {isDark ? 'dark' : 'light'}
-//             />
-//         </>
-//     )
-// }

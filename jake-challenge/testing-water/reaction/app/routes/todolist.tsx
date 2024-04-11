@@ -1,8 +1,13 @@
+// This file manages the todo items
+
+import { useAtom } from "jotai";
 import { useMemo } from "react";
+import todo from '~/atoms/todo';
 
 export default function TodoList({ todos, tab, theme }) {
+    const [thingsTodo, setTodo] = useAtom(todo)
     const visibleTodos = useMemo(
-        () => filterTodos(todos, tab),
+        () => filterTodos(thingsTodo, tab),
         [todos, tab]
     );
     //const cachedValue = useMemo(calculateValue, dependencies  )
@@ -10,12 +15,9 @@ export default function TodoList({ todos, tab, theme }) {
     return (
         <div>
             <ol>
-                {visibleTodos.map(todo => (
-                    <li key={todo.id}>
-                        {todo.completed ?
-                        <s>{todo.text}</s> :
-                        todo.text
-                        }
+                {visibleTodos.map(thingsTodo => (
+                    <li key={thingsTodo.id}>
+                        {thingsTo}
                     </li>
                 ))}
             </ol>
@@ -23,21 +25,9 @@ export default function TodoList({ todos, tab, theme }) {
     )
 }
 
-export function createTodos() {
-    const todos = [];
-    for (let i = 0; i < 20; i++){
-        todos.push({
-            id: i,
-            text: "Todo " + (i + 1),
-            completed: false
-        })
-    }
-    return todos;
-}
-
 function filterTodos(todos, tab) {
     console.log('Filtering ' + todos.length + ' todos for ' + tab + ' tab.');
-
+    console.log(todos[0])
     return todos.filter(todo => {
         if (tab === 'all'){
             return true;

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import createConnection from "./chat";
+import user from "~/atoms/user";
+import { useAtom } from "jotai";
+
 
 
 function ChatRoom({ roomId }: { roomId: string }){
@@ -32,9 +35,11 @@ function ChatRoom({ roomId }: { roomId: string }){
 export default function App(){
     const [roomId, setRoomId] = useState('general');
     const [show, setShow] = useState(false);
+    const [username, setUser] = useAtom(user);
 
     return (
         <>
+            <h1>Welcome to the Chatrooms, {username}</h1>
             <label>
                 Choose the chat room: {' '}
                 <select

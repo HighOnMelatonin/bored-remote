@@ -7,10 +7,10 @@ export default function GetEntry() {
         const formData = new FormData(form);
         
 
-        const response = await fetch("http://localhost:5000/", {
-            method: "post",
-            body: formData,
-        });
+        // const response = await fetch("http://localhost:5000/", {
+        //     method: "post",
+        //     body: formData,
+        // });
 
         console.log(formData.get("entry"))
         console.log(await response.text())

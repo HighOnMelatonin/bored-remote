@@ -6,6 +6,8 @@ import todo from '~/atoms/todo';
 
 export default function TodoList({ todos, tab, theme }) {
     const [thingsTodo, setTodo] = useAtom(todo)
+    // array items need a key
+    // https://react.dev/learn/rendering-lists#where-to-get-your-key
     const visibleTodos = useMemo(
         () => filterTodos(thingsTodo, tab),
         [todos, tab]
@@ -15,9 +17,9 @@ export default function TodoList({ todos, tab, theme }) {
     return (
         <div>
             <ol>
-                {visibleTodos.map(thingsTodo => (
-                    <li key={thingsTodo.id}>
-                        {thingsTo}
+                {thingsTodo.map(thing => (
+                    <li key={thing}>
+                        {thing}
                     </li>
                 ))}
             </ol>

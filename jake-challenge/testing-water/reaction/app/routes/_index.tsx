@@ -1,10 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
-import MyButton from "./abutton";
-//importing button component
-import Linkings from "./linkings";
+import MyButton from "../components/abutton";
+import Linkings from "../components/linkings";
 import {useAtom} from "jotai";
 import user from "~/atoms/user";
-
 
 export const meta: MetaFunction = () => {
 	return [

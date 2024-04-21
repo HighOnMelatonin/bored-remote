@@ -6,7 +6,7 @@ import todo from '~/atoms/todo';
 
 // no jotai
 
-export default function TodoList({ todos, tab, theme }) {
+export default function TodoList({ tab }) {
     // const [thingsTodo, setTodo] = useAtom(todo)
     // array items need a key
     // https://react.dev/learn/rendering-lists#where-to-get-your-key

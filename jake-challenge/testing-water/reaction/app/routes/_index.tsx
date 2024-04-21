@@ -24,7 +24,8 @@ const pages = [
 	"about",
 	"todo",
 	"chatroom",
-	"forms"
+	"forms",
+	"dadJokes"
 ];
 
 

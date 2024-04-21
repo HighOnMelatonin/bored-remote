@@ -29,6 +29,7 @@ const pages = [
 
 
 export default function Index() {
+	localStorage.clear();
 	const listPages = pages.map(page => <li><Linkings file={page} /></li>)
 	// I would like to make it not a list
 

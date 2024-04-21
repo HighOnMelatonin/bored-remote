@@ -13,17 +13,33 @@ export default function App() {
   const [isDark, setIsDark] = useState(false);
   const [username, setUser] = useAtom(user);
 
-  const [thingsTodo, setTodo] = useAtom(todo);
+
+  function populateArray() {
+    let index = 0;
+    let keyString = "item" + index.toString();
+    let thingsTodo = []
+    let thing = localStorage.getItem(keyString)
+    while (thing != undefined) {
+      thingsTodo.push({id: keyString, item: thing});
+      index += 1;
+      keyString = "item" + index.toString();
+      thing = localStorage.getItem(keyString);
+
+    }
+    return thingsTodo
+  }
+
+  const thingsTodo = populateArray();
+  // const [thingsTodo, setTodo] = useAtom(todo);
   async function addTodo(e) {
     e.preventDefault()
     const form = document.querySelector('#getTodo');
     const formData = new FormData(form);
 
-    thingsTodo.push(formData.get("item"))
-    
+    // thingsTodo.push(formData.get("item"))
 
-    const keyString = "item" + thingsTodo.length.toString()
-    localStorage.setItem(keyString, formData.get("item"))
+    const keyString = "item" + thingsTodo.length.toString();
+    localStorage.setItem(keyString, formData.get("item"));
   }
 
   // dark mode doesn't work

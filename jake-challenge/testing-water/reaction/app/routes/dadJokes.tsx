@@ -1,21 +1,29 @@
+import { useState } from "react";
 
-export default function ShowJoke() {
+export default function DadJokes() {
+    const [joke, setJoke] = useState("");
+
     async function getJoke(e) {
         // Get a random dad joke
         // fetch returns a promise that resolves with a response object
-        const response = await fetch("https://icanhazdadjokes.com/",{
-            method: "get"
+        const response = await fetch("https://icanhazdadjoke.com/",{
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
         }
         );
-        const joke = await response.json();
-        console.log(joke)
 
+        console.log(response);
+        setJoke((await response.json()).joke);
+        console.log(joke)
     }
 
     return (
         <div>
             <button onClick={getJoke}>Fetch a dad joke</button>
-            <p></p>
+            <br />
+            <p>{ joke ? joke : "press fetch" }</p>
         </div>
     )
 }

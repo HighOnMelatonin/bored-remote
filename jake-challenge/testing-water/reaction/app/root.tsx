@@ -1,4 +1,3 @@
-import { LinksFunction } from "@remix-run/node";
 import {
   Links,
   Meta,
@@ -6,7 +5,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import stylesheet from "~/tailwind.css?url";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,10 +14,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        {/* <link
+        <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.blue.min.css"
-        /> */}
+        />
       </head>
       <body>
         <main className="container">
@@ -39,7 +37,3 @@ export default function App() {
 export function HydrateFallback() {
   return <p>Loading...</p>;
 }
-
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet},
-]

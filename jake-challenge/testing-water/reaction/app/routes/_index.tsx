@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import MyButton from "../components/abutton";
 import Linkings from "../components/linkings";
-import {useAtom} from "jotai";
+import { useAtom } from "jotai";
 import user from "~/atoms/user";
 
 export const meta: MetaFunction = () => {
@@ -52,7 +52,7 @@ export default function Index() {
 				<h1>Hello {username}</h1>
 				<p>I'm {my.name}</p>
 
-				<form encType="multipart/form-data" id="nameForm" method="post" onSubmit={handleUser}>
+				<form id="nameForm" onSubmit={handleUser}>
 					<input type="text" name="name" placeholder="And you are?"/>
 					<button type="submit">Submit</button>
 				</form>
